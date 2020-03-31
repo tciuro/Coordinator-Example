@@ -1,4 +1,11 @@
-import Foundation
+//
+//  DrinkTypeViewController.swift
+//  CoordinatorExample
+//
+//  Created by Will Townsend on 11/11/16.
+//  Copyright © 2016 Will Townsend. All rights reserved.
+//
+
 import UIKit
 
 public protocol DrinkTypeControllerDelegate: class {
@@ -58,7 +65,7 @@ public class DrinkTypeViewController: UITableViewController {
         
         let drinkType = self.drinkTypes[indexPath.row]
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil)
         cell.textLabel?.text = drinkType
         return cell
     }

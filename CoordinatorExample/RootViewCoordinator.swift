@@ -1,4 +1,11 @@
-import Foundation
+//
+//  RootViewCoordinator.swift
+//  CoordinatorExample
+//
+//  Created by Will Townsend on 11/11/16.
+//  Copyright © 2016 Will Townsend. All rights reserved.
+//
+
 import UIKit
 
 public protocol RootViewControllerProvider: class {

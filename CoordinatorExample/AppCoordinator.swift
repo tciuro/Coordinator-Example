@@ -6,7 +6,6 @@
 //  Copyright © 2016 Will Townsend. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /// The AppCoordinator is our first coordinator
@@ -62,7 +61,6 @@ class AppCoordinator: RootViewCoordinator {
 extension AppCoordinator: SplashViewControllerDelegate {
     
     func splashViewControllerDidTapNewOrder(splashViewController: SplashViewController) {
-        
         let newOrderCoordinator = NewOrderCoordinator(with: self.services)
         newOrderCoordinator.delegate = self
         newOrderCoordinator.start()
@@ -77,14 +75,11 @@ extension AppCoordinator: SplashViewControllerDelegate {
 extension AppCoordinator: NewOrderCoordinatorDelegate {
     
     func newOrderCoordinatorDidRequestCancel(newOrderCoordinator: NewOrderCoordinator) {
-        
         newOrderCoordinator.rootViewController.dismiss(animated: true)
         self.removeChildCoordinator(newOrderCoordinator)
-        
     }
     
     func newOrderCoordinator(newOrderCoordinator: NewOrderCoordinator, didAddOrder orderPayload: NewOrderCoordinatorPayload) {
-        
         guard let drinkType = orderPayload.selectedDrinkType,
             let snackType = orderPayload.selectedSnackType else {
                 return
@@ -96,5 +91,8 @@ extension AppCoordinator: NewOrderCoordinatorDelegate {
         
         newOrderCoordinator.rootViewController.dismiss(animated: true)
         self.removeChildCoordinator(newOrderCoordinator)
+        
+        self.navigationController.children.last?.viewWillAppear(false)
     }
+    
 }

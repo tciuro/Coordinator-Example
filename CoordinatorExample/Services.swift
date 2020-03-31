@@ -1,7 +1,18 @@
+//
+//  Services.swift
+//  CoordinatorExample
+//
+//  Created by Will Townsend on 11/11/16.
+//  Copyright © 2016 Will Townsend. All rights reserved.
+//
+
 import Foundation
 
+public class DataService {
+    public var orders: [Order] = []
+}
+
 public struct Services {
-    
     public let dataService: DataService
     
     public init() {
@@ -17,11 +28,4 @@ public struct Order {
         self.drinkType = drinkType
         self.snackType = snackType
     }
-    
-}
-
-public class DataService {
-    
-    public var orders: [Order] = []
-    
 }

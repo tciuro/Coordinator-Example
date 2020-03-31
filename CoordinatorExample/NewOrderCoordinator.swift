@@ -6,7 +6,6 @@
 //  Copyright © 2016 Will Townsend. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol NewOrderCoordinatorDelegate: class {
@@ -75,7 +74,6 @@ extension NewOrderCoordinator: DrinkTypeControllerDelegate {
     }
     
     func drinkTypeViewController(_ drinkTypeViewController: DrinkTypeViewController, didSelectDrinkType drinkType: String) {
-        
         self.orderPayload = NewOrderCoordinatorPayload()
         self.orderPayload?.selectedDrinkType = drinkType
         
@@ -96,4 +94,5 @@ extension NewOrderCoordinator: SnackTypeViewControllerDelegate {
             self.delegate?.newOrderCoordinator(newOrderCoordinator: self, didAddOrder: newOrderPayload)
         }
     }
+    
 }

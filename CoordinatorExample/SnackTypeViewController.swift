@@ -1,4 +1,11 @@
-import Foundation
+//
+//  SnackTypeViewController.swift
+//  CoordinatorExample
+//
+//  Created by Will Townsend on 11/11/16.
+//  Copyright © 2016 Will Townsend. All rights reserved.
+//
+
 import UIKit
 
 public protocol SnackTypeViewControllerDelegate: class {
@@ -47,7 +54,7 @@ public class SnackTypeViewController: UITableViewController {
         
         let snackType = self.snackTypes[indexPath.row]
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil)
         cell.textLabel?.text = snackType
         return cell
     }

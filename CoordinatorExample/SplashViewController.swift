@@ -1,4 +1,11 @@
-import Foundation
+//
+//  SplashViewController.swift
+//  CoordinatorExample
+//
+//  Created by Will Townsend on 11/11/16.
+//  Copyright © 2016 Will Townsend. All rights reserved.
+//
+
 import UIKit
 
 public protocol SplashViewControllerDelegate: class {
@@ -12,7 +19,7 @@ public class SplashViewController: UIViewController {
     public weak var delegate: SplashViewControllerDelegate?
     
     private var titleLabel: UILabel = UILabel()
-    
+
     public init(services: Services) {
         self.services = services
         super.init(nibName: nil, bundle: nil)
@@ -31,7 +38,10 @@ public class SplashViewController: UIViewController {
         let newOrderButton = UIButton(type: .system)
         newOrderButton.setTitle("New order", for: .normal)
         newOrderButton.backgroundColor = .red
-        newOrderButton.addTarget(self, action: #selector(didTapNewOrder), for: UIControlEvents.touchUpInside)
+        newOrderButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        newOrderButton.setTitleColor(.white, for: .normal)
+        newOrderButton.layer.cornerRadius = 10
+        newOrderButton.addTarget(self, action: #selector(didTapNewOrder), for: UIControl.Event.touchUpInside)
         
         self.view.addSubview(newOrderButton)
         
@@ -47,14 +57,11 @@ public class SplashViewController: UIViewController {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         self.titleLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 20).isActive = true
-        
-        self.updateView()
-        
     }
     
     public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.updateView()
+        super.viewWillAppear(animated)
     }
     
     private func updateView() {
@@ -71,15 +78,15 @@ public class SplashViewController: UIViewController {
         paragraphStyle.lineSpacing = 20
         
         let fontAttributes = [
-            NSForegroundColorAttributeName: UIColor.black,
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 40)
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40)
         ]
         
         let largeFontAttributes = [
-            NSForegroundColorAttributeName: UIColor.black,
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 70)
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 70)
         ]
         
         let string = NSMutableAttributedString()
